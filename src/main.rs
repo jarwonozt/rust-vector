@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 fn main() {
     let mut heros = vec!["lancelot", "hayabusa", "gusion", "balmond"];
     println!("Heros : {:?}", heros);
@@ -33,6 +35,8 @@ fn main() {
     // call function with param
     iterasi(&heros);
     heros.clear(); // change empty vector hero
+    println!();
+    vec_deque();
 
 }
 
@@ -89,9 +93,24 @@ fn iterasi(heros: &Vec<&str>)
     for i in number.iter() {
         println!("Number iter : {}", i);
     }
-
     println!();
+    
+    let hero_slice = &heros[0..3];
+    println!("Hero slice : {:?}", hero_slice);
+    println!();
+
     for hero in heros {
         println!("Hero name : {hero}");
     }
+}
+
+fn vec_deque()
+{
+    let mut person = VecDeque::from(vec!["Jhon", "Rambo", "Jacky Chen", "Bruclee"]);
+    person.pop_front(); // delete element index 0
+    person.push_front("Chuck Noris"); // add element index 0
+    println!("Person data : {:?}", person);
+    println!();
+    person.pop_back(); // delete element last index
+    person.push_back("Chuck Noris"); // add element last index
 }
