@@ -2,6 +2,7 @@ fn main() {
     let mut heros = vec!["lancelot", "hayabusa", "gusion", "balmond"];
     println!("Heros : {:?}", heros);
 
+
     heros.pop();
     println!("Heros pop : {:?}", heros);
     
@@ -16,8 +17,6 @@ fn main() {
     heros[2] = "fanny"; //change saber to fanny
     println!("Heros update : {:?}", heros);
 
-    heros.clear(); // change empty vector hero
-
     let is_empty_heros = heros.is_empty(); //true
     println!("is empty heros : {is_empty_heros}");
 
@@ -27,6 +26,13 @@ fn main() {
     hero_mages();
     println!();
     hero_power();
+    println!();
+    vector_null();
+    println!();
+
+    // call function with param
+    iterasi(&heros);
+    heros.clear(); // change empty vector hero
 
 }
 
@@ -49,4 +55,43 @@ fn hero_power()
 
     println!("Power : {:?}", power_1);
     println!("Range skill : {:?}", range_skill);
+}
+
+fn vector_null()
+{
+    let one_vector_empty:Vec<&str> = vec![];
+    let two_vector_empty:Vec<&str> = Vec::new();
+    let status = two_vector_empty.is_empty();
+    println!("Vector One : {:?}", one_vector_empty);
+    println!("Vector Two : {:?}", two_vector_empty);
+    println!("is empty : {status}");
+}
+
+fn iterasi(heros: &Vec<&str>)
+{
+    let number = vec![1, 3, 5, 7];
+    
+    /* 
+        this code error because ownership data
+        alternative your use borrowing to data number
+        use &number  
+    */
+    for i in &number {
+        println!("Number : {}", i);
+    }
+
+    
+    for i in 0..number.len() {
+        println!("Number iterasi : {}", number[i]);
+    }
+
+    //or use iter()
+    for i in number.iter() {
+        println!("Number iter : {}", i);
+    }
+
+    println!();
+    for hero in heros {
+        println!("Hero name : {hero}");
+    }
 }
